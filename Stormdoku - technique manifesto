@@ -1,0 +1,80 @@
+DLX - Dancing Links 
+
+Hidden Single
+Naked Single
+Hidden Pair
+Naked Pair
+Hidden Triple
+Naked Triple
+Hidden Quad
+Naked Quad
+
+Box Line Reduction
+X - Wing
+Skyscraper
+Empty Rectangle
+2-String Kyte
+Sword Fish
+Jelly Fish
+Finned/Sashimi X-wing
+Finned/Sashimi Sword
+Finned/Sashimi Jelly
+
+XY - Wing
+XYZ - Wing
+WXYZ - Wing
+Barns
+
+Sue De Coq
+Death Blossom 
+D.D.S
+A.D.D.S
+
+N x ( N + K ) Fish
+Muti Sector Locked Set {removed pending rebuild}
+ 
+W - Wing & Ring
+M - Wing & Ring
+S - Wing
+L2 - Wing
+L3 - Wing
+Strong - Wing
+Strong - Ring
+H 1 - Wing
+H 2 - Wing
+H 3 - Wing
+H 4 & 5 - Wing
+iW - Wing & Ring
+
+X - Chain 
+XY - Chain
+A.I.C 
+a.i.c + als chains
+
+ALS  - XZ rule {double link rule} 
+AHS  - XZ rule {some stuff still missed work in progress}  
+ALS  - XY rule {2-3 link rule}
+AALS - 2RC rule
+ALS  - W - Wing & Ring
+ALS  - M - Wing & Ring
+ALS  - S - Wing & Ring
+N^als - N^RC rule {partially built} 
+ALS - Chain 
+
+{bleow works but slow needs upgraded to newer engines} 
+T - XY - Wing
+T - XYZ - Wing
+T - WXYZ - Wing
+T - Barns
+T - XY-Chain
+T - ALS-XZ
+T - ALS-XY
+T - A.D.D.S
+ 
+symetrical placements 
+techiques listed but not operational 
+
+templating 
+P.O.M - works for basics via txt output
+
+Issomorphic swaps on givens only:   

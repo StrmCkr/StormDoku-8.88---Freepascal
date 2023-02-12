@@ -1,0 +1,632 @@
+Procedure solve;
+var
+Count2,Countpm2: integer;
+begin
+
+
+repeat
+
+Countpm2:=countpm;
+count2:= count;
+
+if scount = 0  then break; {solved is empty grid is empty} 
+
+if count = 0 then break;   {no more empty cells} 
+
+if unique = false then break; {errors on the grid} 
+
+ if  (countpm2 = countpm)  and (count2=count)
+  then
+   begin
+    Hs(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    Ns(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    BLR(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    hp(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    np(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    xwing(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    ht(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    nt(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    hq(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    barns(1,3,1,3);  //xy-wing
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    barns(1,3,2,3);  //xyz-wing
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    nq(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    barns(1,4,0,4);  //xyz-wing
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    sky(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    kyte(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    er(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    swordfish(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    jellyfish(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    smashi(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    smashiswords(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    smashijelly(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+ then
+   begin
+    wwing(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+
+   end;
+
+
+ if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    transbarns(1,3,1,3);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+   if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    transbarns(1,3,2,3);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    mwing(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+
+   if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    transbarns(1,4,0,4);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    swing(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+   
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    l2wing(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+   
+   
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    l3wing(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    h2wing(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    h3wing(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    h45wing(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    iwwing(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+   
+ if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    xchain(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;  
+   
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    xychain(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    barns(1,0,0,8);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    suedecoq(1,0,8);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    transbarns(1,0,0,8);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    transxychain(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+
+if  (countpm2 = countpm)  and (count2 = count)
+ then
+   begin
+    alsxz(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+ then
+   begin
+    ahsxz(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+ then
+   begin
+    alsMwing(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+ then
+   begin
+    alsWwing(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+ then
+   begin
+    alsSwing(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+ then
+   begin
+    transalsxz(1);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    alsxy(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+ if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    transalsxy(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    Aals2RC(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    dds(1,0,6);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    adds(1,0,6);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    transadds(1,0,6);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+
+   end;
+   
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+     AlsME(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+
+   end; 
+
+ if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+     NalsNRC(0);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+  end; 
+  
+if  (countpm2 = countpm)  and (count2 = count)
+  then
+   begin
+    fishfinder(1,5,1);
+     if active= true
+      then
+       begin
+        sbrc;
+       end;
+   end;
+
+errorcheck; 
+
+until  (countpm2=countpm) or (scount = 81) or (unique=false);
+
+end;

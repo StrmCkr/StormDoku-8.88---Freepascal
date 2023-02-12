@@ -1,0 +1,39 @@
+procedure skloop(k:integer);
+var
+a,b,c,d,e,f,g,h,yn:integer;
+home,away:nums; 
+begin
+
+for yn:= 129 to 254 do {home set}
+home:=comboset[yn];
+away:=[1..9] - comboset[yn]; 
+
+ for a in[0..23] do  
+ if Ssector[a] * home = [] then 
+ 
+  for b in [a+1..24] do  
+  if Ssector[b] * home = [] then 
+  
+   for c in [b+1..25] do   
+   if Ssector[c] * home = [] then
+   
+    for d in [c+1..26] do
+          if Ssector[d] * home = [] then 
+
+for e in [0..23] -[a,b,c,d] do {away set} 
+ if sector[e] * home <> [] then 
+ 
+ for f in [e+1..24] -[a,b,c,d] do {away set} 
+ if sector[f] * home <> [] then 
+ 
+  for g in [f+1..25] -[a,b,c,d] do {away set} 
+ if sector[g] * home <> [] then 
+ 
+  for h in [g+1..23] -[a,b,c,d] do {away set} 
+ if sector[h] * home <> [] then 
+  begin
+  
+  end; 
+ 
+
+end;{skloop} 

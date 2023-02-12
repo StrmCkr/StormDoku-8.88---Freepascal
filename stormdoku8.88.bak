@@ -1,0 +1,305 @@
+program stormdoku;                           //note  popcnt(dword(set variable))); // counts # elments in a set
+ uses crt,windows,Largesets,generics.collections;//,Dialogs;
+
+{$IFDEF UNIX}{$IFDEF UseCThreads}
+  cthreads,
+  {$ENDIF}{$ENDIF}
+  {$include Global.pas} //virables
+  {$include writexy.pas} // screen writing tool
+  {$include location.pas} // writes sector/b/r/c locations per cell
+  {$include Curser.pas}   // moves around the grid screen
+  {$include Curserpm.pas} // moves around the pm screen
+  {$include viewtables.pas} // extended table view
+  {$include WPM.pas} // displaying data function
+  {$include techdisplay.pas} // write to screen functions for technique sets
+  {$include chaindisplay.pas} // writting function for chain codes{upgrading techdisplay}
+  {$include Griddisplay.pas} // grid layout setup
+  {$include help.pas} // information for keystrokes
+  {$include tools.pas}// builds the peers list and combination sets
+  {$include errorcheck.pas} // checks the grid for invalid states
+  {$include startuptools.pas} // intiation tools for grid starting points
+  {$include CellCombo.pas} // {runs after sbrc calls} builds data tables for the 0..510 combinations for sets in sectors and cells
+  {$include ERIfinder.pas} // builds the ERI tables
+  {$include alsbuilder.pas} // {runs after sbrc calls} als & ahs data builder}
+  {$include Stronglinkbuilder.pas} // runs after sbrc call,: strong link data builder
+  {$include sbrc.pas} // calculator tool for setting variables
+  {$include Load.pas} // loads a saved data file
+  {$include save.pas} // save a grid to data file
+  {$include import.pas} // imports a 81 character string and aranges it on the grid
+  {$include SymetricalPlacement.pas} // collection of gurths symetrical methods for solving
+  {$include solvingtechniques.pas} // all solving tools added todate
+  {$include Solve.pas} // solving code that searches all techniques on a given grid
+  {$include BatchSolve.pas} // batch - solving code for a txt file containing puzzles
+  {$include TimeControl.pas} // controls the execution of solving commands
+  {$include dlx_solve.pas} // dancing links unique proticals
+  {$include GenSolver.pas} // solving techniques added to generator
+  {$include DLX.pas} // dancing links execution calls
+  {$include generator.pas} // grid generator  - has a odd glitch and will crash sometimes
+  {$include copyright.pas} // copyright stuff
+
+//main body
+begin
+
+Clrscr;
+
+
+Window(1,1,240,240);
+
+table:=false;
+Unique:=true;
+
+TextBackGround(COLBG);
+
+peers;
+RCBpeers;
+combo;
+setCellsec;
+lookupSectorRBC;
+sectoroverlap;
+
+viewgiven;
+viewpm;
+Help;
+displayTechnique;
+
+initiate;
+wpm(0,0,0);
+x:=0; y:=0;
+
+copyright;
+
+ repeat
+     curser( rset[x,y] ,COLBG,1);
+
+     ch:=readkey;
+
+{add a digit to cell }
+    if( ch=' ') then ch:='0';
+	
+	   if( ch in ['1'..'9']) then
+      begin
+
+       if s[rset[x,y]] <> []
+        then
+         begin
+               	nsector[rx[rset[x,y]]]:= Nsector[rx[rset[x,y]]] - s[rset[x,y]];
+                nsector[cy[rset[x,y]]+9]:= nsector[cy[rset[x,y]]+9] - s[rset[x,y]];
+                nsector[bxy[rset[x,y]]+18]:= nsector[bxy[rset[x,y]]+18] - s[rset[x,y]];	
+							
+				s[rset[x,y]]:=[ord(ch) - ord('0')];
+				
+				nsector[rx[rset[x,y]]]:= Nsector[rx[rset[x,y]]] + [ord(ch) - ord('0')];
+                nsector[cy[rset[x,y]]+9]:= nsector[cy[rset[x,y]]+9] + [ord(ch) - ord('0')];
+                nsector[bxy[rset[x,y]]+18]:= nsector[bxy[rset[x,y]]+18] + [ord(ch) - ord('0')];
+				
+				for iter in peer[rset[x,y]] do
+				 if s[iter]<> []
+				 then
+				  begin
+				  nsector[rx[iter]]:= Nsector[Rx[iter]] + s[iter];
+				  nsector[cy[iter]+9]:= Nsector[cy[iter]+9] + s[iter];
+				  nsector[bxy[iter]+18]:= Nsector[bxy[iter]+18] + s[iter];
+				  end;
+                 	
+				
+          end
+
+        else
+		begin				
+		
+		  nsector[rx[rset[x,y]]]:= Nsector[rx[rset[x,y]]] +[ord(ch) - ord('0')];
+          nsector[cy[rset[x,y]]+9]:= nsector[cy[rset[x,y]]+9] + [ord(ch) - ord('0')];
+          nsector[bxy[rset[x,y]]+18]:= nsector[bxy[rset[x,y]]+18] + [ord(ch) - ord('0')];	
+		
+		  s[rset[x,y]]:= [ord(ch) - ord('0')];
+		
+		  exclude(ocell,rset[x,y]);
+		  include(Acell,rset[x,y]);
+		  end;
+		
+		sbrc;
+		errorcheck;
+		wpm(0,1,rset[x,y]);
+		
+      end;
+
+      {delete charcter in cell}
+    if ( ch=#8 ) or ( ch=#83 ) or (ch='0')
+     then
+      begin		
+
+          for iter in peer[rset[x,y]]  do
+           Ipm[iter]:= ipm[iter] - S[rset[x,y]];
+
+           ipm[rset[x,y]]:=[];
+	
+	        nsector[rx[rset[x,y]]]:= Nsector[rx[rset[x,y]]] - s[rset[x,y]];
+            nsector[cy[rset[x,y]]+9]:= nsector[cy[rset[x,y]]+9] - s[rset[x,y]];
+            nsector[bxy[rset[x,y]]+18]:= nsector[bxy[rset[x,y]]+18] - s[rset[x,y]];
+			
+		  s[rset[x,y]]:=[];
+		
+		  for iter in peer[rset[x,y]] do
+				 if s[iter]<> []
+				 then
+				  begin
+				  nsector[rx[iter]]:= Nsector[Rx[iter]] + s[iter];
+				  nsector[cy[iter]+9]:= Nsector[cy[iter]+9] + s[iter];
+				  nsector[bxy[iter]+18]:= Nsector[bxy[iter]+18] + s[iter];
+				  end;
+		
+		 exclude(Acell,rset[x,y]);
+		 include(ocell,rset[x,y]);
+		
+		 sbrc;
+		 errorcheck;
+        wpm(0,1,rset[x,y]);		
+      end;	
+
+        {functions}
+
+    { arrow keys }
+    if( ch=#75 ) then Y:=Y-1;
+    if( ch=#77 ) then Y:=Y+1;
+    if( ch=#72 ) then x:=x-1;
+    if( ch=#80 ) then x:=x+1;
+
+    { home - end }
+    if( ch=#71 ) then y:=0;
+    if( ch=#79 ) then y:=8;
+
+    { pageup - pagedown }
+    if( ch=#73 ) then x:=0;
+    if( ch=#81 ) then x:=8;
+
+    { check position }
+    if( y < 0 ) then y:=8;
+    if( y > 8 ) then y:=0;
+    if( x < 0 ) then x:=8;
+    if( x > 8 ) then x:=0;
+	
+	if (ch=#149 ) then copyright;
+    if( ch=#105 ) then import;
+	
+    {load from saved grid }
+    if( ch=#76 ) then begin load; sbrc; wpm(1,0,0); errorcheck; end;
+	
+      {load pm from saved  }
+    if( ch=#108 ) then begin  loadpm; sbrc; wpm(1,0,0); errorcheck;  end; {import file}
+	
+     {save grid to file}
+    if( ch=#19 ) then  save; 	
+	
+	{save pm to file}
+    if( ch=#115) then begin  savepm; end;
+
+    {reset everything}
+    If( ch=#114 ) then begin initiate; sbrc; wpm(1,0,0); end;
+	
+     {clears the pencil mark space to blank }
+    if (ch = #101) then begin emptypm;  wpm(1,0,0) end;
+	
+		{turn on or off extended table generation}
+	 if (ch=#28) then
+	      begin
+		     if table = true then table:=false else table:= True;
+			
+			 if table = true then begin sbrc; viewspace; end;
+			 textcolor(darkgray);
+			 if table = true then  writexy(6,67,' Enabled ');
+			 if table = false then writexy(6,67,' Disabled ');
+			 textcolor(col2);
+			
+		 end;
+		
+	    {batch solve mode}
+    if( ch=#126) then batch;
+	
+	{dancing links}
+    if (ch = #70) then begin dlx; end;  {shift F}
+	
+	{generate a grid}
+    if (ch=#7) then begin  generator; sbrc; wpm(1,0,0) end;
+	
+	{solving buttons}
+    if ch in [#1,#4,#5,#6,#10,#11,#13,#14,#16,#17,#18,#20,#21,#22,#23,#24,#25,#26]+
+	         [#42,#59,#60,#61,#62,#63,#64,#65,#66,#67,#68,#69] +
+	         [#74,#78,#84,#85,#86,#87,#88,#89,#90,#91,#92,#93,#94,#95]+
+			 [#96,#97,#98,#99,#100,#102,#103,#104,#106,#107,#109]+
+			 [ #110,#111,#112,#113,#116,#117,#118,#119,#120,#121]+
+			 [#122,#133,#134,#135,#136,#137,#0138]
+           then
+             time(ch);
+	
+
+    { tabs into the pm grid }
+
+    if (ch =#9 ) or (ch=#15)
+      then
+       repeat
+
+        curserpm(rset[x,y],Colbg,1);
+        ch:=readkey;
+
+        { delete pms }
+        if( ch in ['1'..'9']) then
+         begin
+           for iter:= 1 to 9 do
+            if iter = ord(ch) - ord('0')
+             then
+			  begin
+              delpm[ rset[x,y] ]:=delpm[ rset[x,y] ] + [iter];
+			  Ipm[ rset[x,y] ]:=Ipm[ rset[x,y] ] + [iter];
+               end;
+			
+              sbrc;
+            errorcheck;			
+			wpm(0,2,rset[x,y]);
+
+         end;
+
+           {resest the pm deletions }
+         if ( ch=#8 ) or ( ch=#83 ) or (ch='0') then
+            begin
+              delpm[ rset[x,y] ]:=[];
+			  Ipm[ rset[x,y] ]:=[];
+			
+			  sbrc;
+			  errorcheck;
+			   wpm(0,2,rset[x,y]);
+            end;
+
+        { arrow keys }
+       if( ch=#75 ) then Y:=Y-1;
+       if( ch=#77 ) then Y:=Y+1;
+       if( ch=#72 ) then x:=x-1;
+       if( ch=#80 ) then x:=x+1;
+
+        { home - end }
+       if( ch=#71 ) then y:=0;
+       if( ch=#79 ) then y:=8;
+
+        { pageup - pagedown }
+       if( ch=#73 ) then x:=0;
+       if( ch=#81 ) then x:=8;
+
+        { check position }
+       if( y<0 ) then y:=8;
+       if( y>8 ) then begin y:=0; x:=x; end;
+       if( x<0 ) then x:=8;
+       if( x>8 ) then x:=0;
+
+	   if (ch=#9 ) or (ch =#15) or (ch=#27 )
+	    then
+		  begin
+		    if table = true then begin sbrc; viewspace; end;
+		end; 	
+
+     until (ch=#9) or (ch=#15) or (ch=#27);
+
+
+    until (ch=#27);
+
+
+end.
+
