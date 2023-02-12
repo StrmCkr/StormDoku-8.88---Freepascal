@@ -1,0 +1,90 @@
+                             M         C         N        L  F  S
+    1. Fixed boxes
+    Mini-Rows (MR)         C           8    107.495.424   3  0  N equivalent to Mini-Columns (MC)
+    2 MR, 1 MD             CR1         7     21.233.664   3  0  Y 
+    1 MR, 2 MD             CR1R2       9      4.204.224   3  0  Y 
+    Mini-Diagonals(MD)     CR         10      2.508.084   3  0  Y
+
+    2. Boxes move in bands
+    Jumping-Rows (JR)      S          25     14.837.760   3  0  N 
+    2 JR, 1 GR             SR1        28      2.085.120   3  0  Y 
+    1 JR, 2 GR             SR1R2      30        294.912   3  0  Y 
+    Gliding-Rows (GR)      SR         32      6.342.480   3  0  Y 
+    Full-Rows (FR)         SC1        27          5.184   9  0  U 
+    2 FR, 1 WR             SR1C1      26          2.592   9  0  U
+    1 FR, 2 WR             SR1R2C1    29          1.296   9  0  U
+    Waving-Rows (WR)       SRC1       31            648   9  0  U
+
+    3. Boxes move triangular (B 159, 267, 368)
+    Jumping-Diagonals (JD) BS         22        323.928   3  0  Y  also "Block symmetry"
+    Broken-Columns (BC)    BSR1       24            288   9  0  U 
+    Full-Diagonals(FD)     BSR1C1     23            162   9  0  U 
+
+    4. Rotational symmetries
+    Half-Turn (HT)         DD2        79    155.492.352   2  1  Y  also "180° rotational symmetry"
+    Quarter-Turn (QT)      DBxRx      86         13.056   4  1  Y  also "90° rotational symmetry", has HT symmetry too
+
+    5. Diagonal symmetries
+    Diagonal-Mirror (DM)   D          37     30.258.432   2  9  Y  also "diagonal symmetry"
+    DM+JD                  DBS        43            288   6  0  Y
+    DM+MD                  DRC        40          1.854   6  0  Y
+
+    6. Sticks symmetries
+    Column-Sticks (CS)     BxCx      134    449.445.888   2  9  Y  also "sticks symmetry"
+    CS+MC                  BxCxR     135         27.648   6  0  U
+    CS+JR                  BxCxS     145         13.824   6  0  U
+    CS+ GR/Band2,JR/B13    BxCxSR2   144          3.456   6  0  U
+    CS+GR                  BxCxSR    142          6.480   6  0  U
+    CS+ JR/B2,GR/B13       BxCxSR1R3 143          1.728   6  0  U
+
+
+Meaning of the shortcuts of the equivalence operations (to be read from left to right, eg DBS means S after B after D)
+
+B..cyclically move the bands downwards (B123->B231)
+S..cyclically move the stacks rightwards (S123->S231)
+Bx..exchange B1 and B3 (B123->B321)
+Sx..exchange S1 and S3 (S123->S321)
+R1 (R2, R3)..cyclically move the rows in band 1(2,3) downwards (r123->r231)
+C1 (C2, C3)..cyclically move the columns in stack 1 (2.3) rightwards (c123->c231)
+R..cyclically move the rows in all bands downwards (R1R2R3 or r123456789->r231564897)
+C..cyclically move the colums in all stacks rightwards (C1C2C3 or r123456789->r231564897)
+Rx..invert the order (exchange the first and 3rd) of the rows in all bands (r123456789->r321654987)
+Cx..invert the order (exchange the first and 3rd) of the colums in all stacks (c123456789->c321654987)
+D..mirror at the main diagonal from r1c1 to r9c9 (r123456789<->c123456789)
+D2..mirror at the subdiagonal from r1c9 to r9c1 (r123456789<->c987654321)
+
+BxRx  ->> Horrizontal mirror 
+SxCX ->>  Vertical mirror 
+
+C -> Mini-Row Symmetry (MRS)
+R -> Mini-Column Symmetry (MCS)
+RC -> Mini-Diagonal Symmetry (MDS)
+S -> Band Symmetry (BAS)
+B -> Stack Symmetry (SAS)
+BS -> Block Symmetry (BOS) (Bludo applicable)
+SR -> Horizontal Glide Symmetry (HGS) (Gludo applicable)
+BC -> Vertical Glide Symmetry (VGS) (Gludo applicable)
+DD2 or BxRxSxCx-> Half-Turn (180 Degree Rotation) Symmetry (HTS)
+DBxRx -> Quarter-Turn (90 Degree Rotation) Symmetry (QTS)
+D -> Leading-Diagonal (Reflection) Symmetry (D\S)
+D2 -> Non-Leading-Diagonal (Reflection) Symmetry (D/S)
+SxRx -> Horizontal Stick Symmetry (HSS)
+BxCx -> Vertical Stick Symmetry (VSS)
+
+issomorph(#116,select,change with); {tanspose} (none, 1)
+issomorph(#115,select,change with); {stack} (sequence -> none,12,23,12,23,12) 
+issomorph(#98,select,change with);  {band}  
+issomorph(#114,select,change with); {Row} 123 
+issomorph(#114,select,change with); {Row} 456 
+issomorph(#114,select,change with); {Row} 789 
+issomorph(#99,select,change with);  {Col} 123 
+issomorph(#99,select,change with);  {Col} 456 
+issomorph(#99,select,change with);  {Col} 789 
+
+the 6 types are in order of sequence applied (none,12,23,12,12,23)
+
+6^2
+6^6
+2
+=3,359,232 permuations. 
+

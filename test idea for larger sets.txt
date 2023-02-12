@@ -1,0 +1,235 @@
+    {$mode objfpc}{$inline on}
+    { A simple way to implement large or huge sets.
+     (c) 2019 Thaddy de Koning. No license and not
+     re-licensable: free for all to use.
+     Copyright holds:
+     You can not claim license nor copyrigths }
+    unit largesets;
+    { Operator      Action
+      ---------------------------------------------
+      +             Union
+      -             Difference
+      *             Intersection
+      ><        Symmetric difference
+      <=        Contains
+      include   Include an element in the set
+      exclude   Exclude an element from the set
+      in        Check if an element is in a set
+    }
+    interface
+    uses
+      generics.collections;
+     
+    type
+      TWordSet  = specialize TSortedHashSet<word >;
+      { The next two can cause some real memory pressure, be careful }
+      TDWordSet = specialize TSortedHashSet<dword>;
+      TQWordSet = specialize TSortedHashSet<Qword>;
+     
+      { union }
+      operator + (const a,b:TWordset ):TWordSet;
+      operator + (const a,b:TDWordset):TDWordSet;
+      operator + (const a,b:TQWordset):TQWordSet;
+     
+      { difference }
+      operator - (const a,b:Twordset ):TWordSet;
+      operator - (const a,b:TDwordset):TDWordSet;
+      operator - (const a,b:TQwordset):TQWordSet;
+     
+      { intersection }
+      operator * (const a,b:TwordSet ):TWordSet;
+      operator * (const a,b:TDwordSet):TDWordSet;
+      operator * (const a,b:TQwordSet):TQWordSet;
+     
+      { symmetric difference }
+      operator >< (const a,b:TWordSet ):TWordSet;
+      operator >< (const a,b:TDWordSet):TDWordSet;
+      operator >< (const a,b:TQWordSet):TQWordSet;
+     
+      { contains }
+      operator <= (const a,b:TWordSet ):Boolean;
+      operator <= (const a,b:TDWordSet):Boolean;
+      operator <= (const a,b:TQWordSet):Boolean;
+     
+      { in }
+      operator in (const a:word; const b:TWordset ):Boolean;
+      operator in (const a:dword;const b:TDWordset):Boolean;
+      operator in (const a:qword;const b:TQWordset):Boolean;
+     
+      { include }
+      procedure include(const a:TWordSet; const b:Word);
+      procedure include(const a:TDWordSet;const b:DWord);
+      procedure include(const a:TQWordSet;const b:QWord);
+     
+      { exclude }
+      procedure exclude(const a:TWordSet;const  b:Word);
+      procedure exclude(const a:TDWordSet;const b:DWord);
+      procedure exclude(const a:TQWordSet;const b:QWord);
+     
+    implementation
+     
+      { union }
+      operator + (const a,b:TWordset):TWordSet;
+      begin  
+        b.UnionWith(a);
+        Result := b;
+      end;  
+     
+      operator + (const a,b:TDWordset):TDWordSet;
+      begin
+        b.UnionWith(a);
+        Result := b;
+      end;
+     
+      operator + (const a,b:TQWordset):TQWordSet;
+      begin
+        b.UnionWith(a);
+        Result := b;
+      end;
+     
+      { difference }
+      operator -(const a,b:Twordset):TWordSet;
+      begin
+        b.ExceptWith(a);
+        result:=b;
+      end;
+     
+      operator -(const a,b:TDwordset):TDWordSet;
+      begin
+        b.ExceptWith(a);
+        result:=b;
+      end;
+     
+      operator -(const a,b:TQwordset):TQWordSet;
+      begin
+        b.ExceptWith(a);
+        result:=b;
+      end;
+     
+      { intersection }
+      operator *(const a,b:TwordSet):TWordSet;
+      begin
+        b.IntersectWith(a);
+        Result := b;
+      end;
+     
+      operator *(const a,b:TDwordSet):TDWordSet;
+      begin
+        b.IntersectWith(a);
+        Result := b;
+      end;
+     
+      operator *(const a,b:TQwordSet):TQWordSet;
+      begin
+        b.IntersectWith(a);
+        Result := b;
+      end;
+     
+      { symmetric difference }
+      operator ><(const a,b:TWordSet):TWordSet;
+      begin
+        b.SymmetricExceptWith(a);
+        Result := b;
+      end;
+     
+      operator ><(const a,b:TDWordSet):TDWordSet;
+      begin
+        b.SymmetricExceptWith(a);
+        Result := b;
+      end;
+     
+      operator ><(const a,b:TQWordSet):TQWordSet;
+      begin
+        b.SymmetricExceptWith(a);
+        Result := b;
+      end;
+     
+      { contains }
+      operator <=(const a,b:TWordSet):Boolean;
+      var
+        c:word;
+      begin
+        Result := true;
+        for c in a do
+        if not b.contains(c) then
+        begin
+          Result := False;
+          break;
+        end;
+      end;
+     
+      operator <=(const a,b:TDWordSet):Boolean;
+      var
+        c:word;
+      begin
+        Result := true;
+        for c in a do
+        if not b.contains(c) then
+        begin
+          Result := False;
+          break;
+        end;
+      end;
+     
+      operator <=(const a,b:TQWordSet):Boolean;
+      var
+        c:word;
+      begin
+        Result := true;
+        for c in a do
+        if not b.contains(c) then
+        begin
+          Result := False;
+          break;
+        end;
+      end;
+     
+      { in }
+      operator in (const a:word;const b:TWordset):Boolean;
+      begin
+        Result := b.Contains(a);
+      end;  
+     
+      operator in (const a:dword;const b:TDWordset):Boolean;
+      begin
+        Result := b.Contains(a);
+      end;
+     
+      operator in (const a:qword;const b:TQWordset):Boolean;
+      begin
+        Result := b.Contains(a);
+      end;
+     
+      { include }
+      procedure include(const a:TWordSet;const b:Word);
+      begin
+        a.Add(b);
+      end;
+     
+      procedure include(const a:TDWordSet;const b:DWord);
+      begin
+        a.Add(b);
+      end;
+     
+      procedure include(const a:TQWordSet;const b:QWord);
+      begin
+        a.Add(b);
+      end;
+     
+      { exclude }
+      procedure exclude(const a:TWordSet;const b:Word);
+      begin
+        a.Remove(b);
+      end;
+     
+      procedure exclude(const a:TDWordSet;const b:DWord);
+      begin
+        a.Remove(b);
+      end;
+     
+      procedure exclude(const a:TQWordSet;const b:QWord);
+      begin
+        a.Remove(b);
+      end;
+     
+    end.

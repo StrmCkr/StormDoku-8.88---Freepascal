@@ -1,0 +1,98 @@
+
+
+
+
+
+#### Variants
+
+* [Daily Killer Sudoku](https://www.dailykillersudoku.com/)  
+Online killer sudoku site with a fantastic ui and great helpers to wrap your head around the variant
+
+* [Sudoku central Arrow sudoku](https://sudokucentral.co.uk/arrowsudoku)  
+Quite a fun site with daily arrow sudoku puzzles
+
+* [Puzzle team sudoku](https://www.puzzle-sudoku.com/)  
+Not the best interface for solving sudoku, but has some fun variants like sandwich and jigsaw sudoku.
+
+### Android
+
+* [Enjoy sudoku](https://play.google.com/store/apps/details?id=com.enjoysudoku.enjoysudoku)   
+A great App with really good puzzles and a well polished interface
+
+* [Andoku 3](https://play.google.com/store/apps/details?id=com.andoku.three.gp)  
+Another great application, in addition to classic sudoku it also has variants, but the hints doesn't have as many techniques as enjoy sudoku.
+
+* [Brainium sudoku](https://play.google.com/store/apps/details?id=com.brainium.sudoku.free)  
+This app also has a good interface and hint system, but it can get a bit cluttered while solving
+
+* [Sudoku 10k](https://play.google.com/store/apps/details?id=com.onegravity.sudoku.sudoku10kfree)  
+While the Interface of this app is kind of outdated it has really good puzzles and a good hint system
+
+#### Android apps to avoid
+
+* [sudoku.com](https://play.google.com/store/apps/details?id=com.easybrain.sudoku.android)  
+A terrible hint system and it punishes you for fatfingering the number input
+
+### Apple
+
+* [sudoku joy](http://itunes.apple.com/us/app/sudoku-joy/id331585707?mt=8)
+The same as enjoy sudoku for android.
+
+* [smartnikoli](https://apps.apple.com/us/app/smartnikoli/id1464863105)
+Nikoli.com's app. There's a ad-wall on how many puzzles you can play per day, but all the puzzles are hand-set and fantastic quality. Also offers Akari puzzles.
+
+## Notation techniques
+
+* [Vocabulary](https://www.reddit.com/r/sudoku/about/wiki/index/vocabulary/)
+
+When notating a puzzle, it's often very helpful to mark candidates positionally, like on a phone keypad (AKA):  
+
+    1 2 3
+    4 5 6
+    7 8 9
+
+In a cell, either with small numbers or dots, that way it gets easier to see patterns in the puzzle without having to read each cell.
+
+* [Snyder notation](https://www.reddit.com/r/sudoku/wiki/snyder_notation)
+* [Full notation](https://www.reddit.com/r/sudoku/wiki/full_notation)
+
+## Solving Techniques
+
+### Basic techniques
+
+* [Singles](https://www.reddit.com/r/sudoku/wiki/singles)
+* [Box / Line reduction](https://www.reddit.com/r/sudoku/wiki/box_line_reduction)
+* [Pairs](https://www.reddit.com/r/sudoku/wiki/pairs)
+* [Triplets](https://www.reddit.com/r/sudoku/wiki/triplets)
+* [Quads](https://www.reddit.com/r/sudoku/wiki/quads)
+
+### Involved techniques
+
+* [Strong- and weak links](https://www.reddit.com/r/sudoku/wiki/strong-weak-links)
+* [X-wing](https://www.reddit.com/r/sudoku/wiki/x-wing)
+* [Skyscraper](https://www.reddit.com/r/sudoku/wiki/skyscraper)
+* [2 String kite](https://www.reddit.com/r/sudoku/wiki/two_string_kite)
+* [Y-wing](https://www.reddit.com/r/sudoku/wiki/y-wing)
+* [XYZ-wing](https://www.reddit.com/r/sudoku/wiki/xy-wing)
+* [W-wing](https://www.reddit.com/r/sudoku/wiki/w-wing)
+* [Uniqueness](https://www.reddit.com/r/sudoku/wiki/uniqueness)
+* [Bivalue Universal Grave (BUG)](https://www.reddit.com/r/sudoku/wiki/bug)
+* [x-colouring](https://www.reddit.com/r/sudoku/wiki/x-colour)
+* [Big fishes (swordfish - Jellyfish)](https://www.reddit.com/r/sudoku/wiki/fishes)
+* [Windmill](https://www.reddit.com/r/sudoku/wiki/windmill)
+
+### "Expert" Techniques
+
+* [Alternating Inference Chains (AIC)](https://www.reddit.com/r/sudoku/wiki/aic)
+* [3D Medusa Colouring](https://www.reddit.com/r/sudoku/wiki/3d_medusa)
+
+
+
+
+### Other
+
+### Puzzle Collections
+
+* [A large collection of different Sudoku Puzzles in a series of files](https://drive.google.com/drive/folders/1e_hQNQiJVxhHP_5WBQhBNur9dnS5ml3E) 
+
+These are available for download and import into apps.  The .sdm file format is just a renamed .txt file so these should be able to be opened in a text editor.  Within this link, the file 'Sudoku Master Collection' is a zip of all the other collections in one easy file.
