@@ -63,7 +63,7 @@ if k=0 then begin  g:=0; setlength(techwrite,g+1,14); end;
                   techwrite[g,0]:=[1];
 				  techwrite[g,1]:=[0];
 				  techwrite[g,3]:=[n];
-				  techwrite[g,2]:=[Rset[xn,yn]];
+				  techwrite[g,2]:=[Cset[xn,yn]];
                   techwrite[g,n+3]:=peer[rset[xn,yn]] * digitcell[n];                  
                   G:=g+1;
                   setlength(techwrite,g+1,14);
@@ -92,7 +92,7 @@ if k=0 then begin  g:=0; setlength(techwrite,g+1,14); end;
 
                   techwrite[g,0]:=[1];
 				  techwrite[g,1]:=[0];
-				  techwrite[g,2]:=[Rset[xn,yn]];
+				  techwrite[g,2]:=[Bset[xn,yn]];
 				  techwrite[g,3]:=[n];				  
                   techwrite[g,n+3]:=peer[rset[xn,yn]] * digitcell[n];                  
                   G:=g+1;
